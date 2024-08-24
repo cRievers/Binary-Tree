@@ -8,18 +8,17 @@ package trees;
  *
  * @author 0076890
  */
-public class Node<T> {
-    T key;
+public class Node {
+    int key;
     Node left;
     Node right;
     
     public Node(){
-        this.key = null;
         this.left = null;
         this.right = null;
     }
     
-    public Node(T value){
+    public Node(int value){
         this.key = value;
         this.left = null;
         this.right = null;

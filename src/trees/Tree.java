@@ -48,7 +48,7 @@ public class Tree {
             size++;
             return root;
         }
-        else if((int)no.key < (int)root.key)
+        else if(no.key < root.key)
             root.left = insert(root.left, no);
         else
             root.right = insert(root.right, no);
@@ -71,15 +71,33 @@ public class Tree {
             return countElements(root.left) + 1 + countElements(root.right);
     }
     
-    public Node isThere(Node root, int num){
-        if(this.size == 0)
-            return null;
-        if((int)root.key == num)
-            return root;
-        else if((int)root.key > num)
-            root.left = isThere(root.left, num);
-        else
-            root.right = isThere(root.right, num);
-        return null;
+    public boolean isThere(Node root, int num){
+        if(findValue(root, num) == null)
+            return false;
+        return true;
     }
+
+    public boolean isSubTree(Node t, Node s){
+        if (s == null) return true;
+        if (t == null) return false;
+        Node no = findValue(t, s.key);
+        return (equals(no, s));
+    }
+
+    public boolean equals(Node tree, Node subt){
+        if (subt == null) return true;
+        if (tree == null && subt != null) return false;
+        if (tree.key == subt.key) return true;
+        
+        return (equals(tree.left, subt.left) && equals(tree.right, subt.right));
+    }
+
+    public Node findValue(Node root, int num){
+        if (root == null) return(null);
+        if (root.key == num) return(root);
+        if (root.key > num)
+            return(findValue(root.left, num));
+        return(findValue(root.right, num));
+    }
+
 }

@@ -36,5 +36,14 @@ public class Main {
         int n = 6;
         System.out.println("Existe " + n + " na arvore: ");
         System.out.println(arvore.isThere(arvore.getRoot(), n));
+        System.out.println("");
+
+        Tree subArvore = new Tree();
+        
+        subArvore.insert(3);
+        subArvore.insert(1);
+
+        System.out.println(arvore.isSubTree(arvore.getRoot(), subArvore.getRoot()));
+        System.out.println("");
     }
 }
